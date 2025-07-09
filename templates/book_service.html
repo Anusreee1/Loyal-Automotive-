@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <h2>🛠 Book a Service</h2>
+  <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="mb-3">{{ form.bike_model.label }} {{ form.bike_model(class="form-control") }}</div>
+      <div class="mb-3">{{ form.service_type.label }} {{ form.service_type(class="form-select") }}</div>
+      <div class="mb-3">{{ form.booking_date.label }} {{ form.booking_date(class="form-control") }}</div>
+      <div>{{ form.submit(class="btn btn-primary") }}</div>
+  </form>
+{% endblock %}

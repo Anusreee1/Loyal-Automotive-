@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<style>
+  body {
+    background-image: url('/static/images/user_dashboard_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dashboard-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 30px;
+    color: #333;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .list-group-item a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .list-group-item a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="dashboard-overlay">
+  <div class="card shadow-lg">
+    <h2 class="mb-3">Welcome, {{ current_user.username }}</h2>
+    <p>Your role: <strong>{{ current_user.role | capitalize }}</strong></p>
+    <p>What would you like to do today?</p>
+
+    <ul class="list-group list-group-flush">
+      {% if current_user.role == 'admin' %}
+        <li class="list-group-item"><a href="{{ url_for('admin_dashboard') }}">Go to Admin Dashboard</a></li>
+        <li class="list-group-item"><a href="{{ url_for('spare_parts') }}">Manage Spare Parts</a></li>
+        <li class="list-group-item"><a href="{{ url_for('admin_bookings') }}">View All Bookings</a></li>
+
+      {% elif current_user.role == 'mechanic' %}
+        <li class="list-group-item"><a href="{{ url_for('mechanic_dashboard') }}">View Assigned Services</a></li>
+        <li class="list-group-item"><a href="{{ url_for('update_booking_status') }}">Update Booking Status</a></li>
+
+      {% else %}
+        <li class="list-group-item"><a href="{{ url_for('spare_parts') }}">View Spare Parts</a></li>
+        <li class="list-group-item"><a href="{{ url_for('book_service') }}">Book a Service</a></li>
+        <li class="list-group-item"><a href="{{ url_for('view_cart') }}">View Cart</a></li>
+        <li class="list-group-item"><a href="{{ url_for('view_wishlist') }}">View Wishlist</a></li>
+      {% endif %}
+    </ul>
+
+    <div class="mt-4 text-center">
+      <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
