@@ -107,6 +107,4 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 Author
 
 Anusree P
-📧 Contact: [your-email@example.com
-]
-🔗 GitHub: [your-github-link]
+📧 Contact: anusreeemanoj@gmail.com
