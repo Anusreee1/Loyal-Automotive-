@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite database
+*.db
+instance/
+*.sqlite3
+
+# Virtual environment
+venv/
+.env/
+
+# VS Code workspace settings
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
